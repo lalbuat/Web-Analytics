@@ -1,0 +1,20 @@
+<body class="confirmationBody">
+	<div class="confirmation">
+		<p style="color:green;">
+			<em>
+				<% if flash[:registered] %>
+					<%= flash[:registered] %>
+				<% end %>
+			</em>
+		</p>
+		<div class="confirmation-group">
+			<p class="confirmation-data">First name    : <%= @firstname%></p>
+			<p class="confirmation-data">Last name     : <%= @lastname %></p>
+			<p class="confirmation-data">User Id       : <%= @userid %></p>
+			<p class="confirmation-data">Password      : <%= @password %></p>
+			<p class="confirmation-data">Email Address : <%= @email %></p>
+			<p> <%= link_to "back to login","/",method:"get" %> </p>
+		</div>
+	</div>
+
+</body>

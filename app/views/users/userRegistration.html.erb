@@ -1,0 +1,23 @@
+<body class="registrationBody">
+
+	<div class="registration">
+		<p style="color:red;">
+			<em>
+			<% if flash[:exist] %>
+				<%= flash[:exist] %>
+			<% end %>
+		</em>
+		</p>
+		<div class="form-registration-group">
+			<%= form_for :user do |f| %>
+				<p><%= f.text_field :first_name ,required:"required",placeholder:"Firstname","class"=>"form-registration" %></p>
+				<p><%= f.text_field :last_name,required:"required",placeholder:"Lastname","class"=>"form-registration" %></p>
+				<p><%= f.password_field :password,required:"required",placeholder:"Password","class"=>"form-registration" %></p>
+				<p><%= f.email_field :email,required:"required",placeholder:"Email Id","class"=>"form-registration" %></p>
+				<%= f.submit :Register,"class"=>"btn btn-primary" %>
+			<% end %>
+			<p><%= link_to "back to login",home_url,method:"get" %></P>
+		</div>
+	</div>
+
+</body>

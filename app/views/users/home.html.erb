@@ -1,0 +1,68 @@
+
+<body class="homebody">
+
+<header>
+	<h2>Analyse Your Websites</h2>
+	<ul>
+		<li> <%= link_to "Settings",deactivate_url,method:"get","id"=>"setting" %> </li>
+		<li><b><%= @username %></b>(<%= link_to "logout",logout_url,"id"=>"logout" %>)</li>
+	</ul>
+</header>
+
+
+<div class="registerbutton">
+	<strong><%= link_to "Add New Website",webadd_url,method:"get" %></strong>
+</div>
+
+<div class="mainContent">
+	<div class="tableHeader">
+		<p>
+		<em style="color:green;">
+			<% if flash[:successful] %>
+				<%= flash[:successful] %>
+			<% end %>
+		</em>
+		</p>
+	</div>
+
+	<div class="tableContainer">
+		<table class="table">
+				<tr class="column">
+					<th style="text-indent:0px;">Website name</th>
+					<th>Registration date</th>
+					<th>Tracking code</th>
+					<th>Tracking Id</th>
+					<th style="text-align:center;">Your Website Analysis</th>
+				</tr>
+				<% @websites.each do |element| %>
+					<tr>
+					  <td style="text-indent:0px;">"<%= element['website_name'] %>"</td>
+					  <td>"<%= element['registration_date'] %>"</td>
+					  <td><%= link_to "embed","#",onclick:"takeEmbed('"+element['tracking_id']+"'); return false;","id"=>"embed" %></td> 
+					  <td>"<%= element['tracking_id'] %>"</td>
+					  <td><%= link_to "Per Day","#",onclick:"giveAnalytics('"+@dataPerDayUrl+"','"+element['tracking_id']+"'); return false;","id"=>"analytics"%>  </td>
+					  <td style="text-indent:0px;"><%= link_to "Per Month","#",onclick:"giveAnalytics('"+@dataPerMonthUrl+"','"+element['tracking_id']+"'); return false;","id"=>"analytics"%>  </td>
+					</tr> 
+				<% end %>
+		</table>
+	</div>
+</div>
+
+
+
+<div id="embedcodediv">
+	<div class="pallete">
+		<B class="close">X</B>
+		Copy the code below to your website.<br><br>
+		<textarea rows="6" cols="25">Hey</textarea>
+	</div>
+</div>
+
+<div id="seeAnalytics">
+	<div class = "analyticsPallete">
+		<B class="close">Close</B>
+		<div id = "graph"></div>
+	</div>
+</div>
+
+</body>

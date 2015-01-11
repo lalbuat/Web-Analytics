@@ -1,0 +1,22 @@
+<body class="welcomeBody">
+	<div class="welcome">
+		<p style="color:red;">
+		<em>
+			<% if flash[:invalid] %>
+				<%= flash[:invalid] %>
+			<% end %>
+		</em>
+		</p>
+
+		<div class="form-login-group">
+
+			<%= form_for :user do |f| %>
+				<p> <%= f.text_field :email,required:"required",placeholder:" User Id","class"=>"form-login" %> </p>
+				<p> <%= f.password_field :password,required:"required",placeholder:" Password","class"=>"form-login" %> </p>
+				<%= f.submit :Login,"class"=>"btn btn-primary" %>
+			<% end %> 
+			<b>or</b>
+			<%= button_to "Register","users/registration",method:"get","class"=>"btn btn-primary" %><br />
+		</div>
+	</div>
+</body>

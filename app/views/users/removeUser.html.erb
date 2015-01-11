@@ -1,0 +1,27 @@
+<h1>Account Deactivation</h1>
+<p style="color:green;">
+	<em>
+		<% if flash[:found] %>
+		<%= flash[:found] %>
+		<% end %>
+	</em>
+</p>
+
+<p style="color:red;">
+	<em>
+		<% if flash[:notfound] %>
+		<%= flash[:notfound] %>
+		<% end %>
+	</em>
+</p>
+
+
+<div> 
+ <%= form_for :user do |f| %> 
+ 	<p><%= f.email_field :email,required:"required",placeholder:" your email id" %></p>
+ 	<p><%= f.password_field :password,required:"required",placeholder:" password" %></p>
+ 	<%= f.submit :Deactivate %>
+ <% end %>
+</div>
+
+<p> <%= link_to "back to home",home_url,method:"get" %> </p>
